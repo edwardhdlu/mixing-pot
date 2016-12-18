@@ -34,12 +34,12 @@ print "Here are your ingredients: "
 print ingredients[a] 
 print ingredients[b]
 print ingredients[c]
-print
-
-print "Score: 0"
-print "What do you want to add?"
 
 while score >= -100:
+	print
+	print "Score: " + str(score)
+	print "What do you want to add?"
+
 	ans = raw_input()
 	if ans in active:
 		print "Already added, try again"
@@ -55,8 +55,8 @@ while score >= -100:
 
 		for item in active:
 			print item
-		print
-		print "Score: " + str(score)
-		print "What do you want to add?"
 	else:
 		print "Not a valid ingredient, try again"
+
+print "You lose!"
+
