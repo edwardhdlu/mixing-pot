@@ -5,6 +5,7 @@ import string
 ###
 recipe_dict = {}
 ingredients = []
+void = ["cakes and baking", "unleavened bread"]
 
 for c in string.ascii_lowercase:
 	in_file = open("data/" + c + ".txt", "r")
@@ -16,6 +17,9 @@ for c in string.ascii_lowercase:
 		arr = line.split(",")
 
 		ing = arr[0]
+		if ing in void:
+			break
+
 		ingredients.append(ing)
 		arr.pop(0)
 
@@ -52,7 +56,7 @@ for key in recipe_dict.keys():
 ###
 # WRITE TO FILE
 ###
-out_file = open("scores.txt", "w")
+out_file = open("freqs.txt", "w")
 
 for key in score_dict.keys():
 	out_file.write(key[0] + "," + key[1] + "," + str(score_dict[key]) + "\n")

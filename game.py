@@ -3,15 +3,11 @@ from random import randint
 ingredients = map(lambda x: x.replace("\n", ""), open("ingredients.txt").readlines())
 scores_file = open("scores.txt").readlines()
 scores = {}
-cur_max = 0
 
 for line in scores_file:
 	arr = line.split(",")
 	key = (arr[0], arr[1])
-
-	score = int(arr[2])
-	scores[key] = score
-	cur_max = score if score > cur_max else cur_max
+	scores[key] = int(arr[2])
 
 ###
 # RUN THE GAME
@@ -46,7 +42,7 @@ while score >= -100:
 	elif ans in ingredients:
 		for item in active:
 			key = (ans, item) if ans < item else (item, ans)
-			val = int(100 * scores[key] / cur_max if key in scores else -20)
+			val = int(scores[key] if key in scores else -10)
 
 			print ans + " + " + item + " : " + ("+" + str(val) if val >= 0 else str(val))
 			score += val
