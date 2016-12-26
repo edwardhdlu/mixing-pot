@@ -25,6 +25,7 @@ while c == b or c == a:
 	c = randint(0, k - 1)
 
 active = [ingredients[a], ingredients[b], ingredients[c]]
+initial = [ingredients[a], ingredients[b], ingredients[c]]
 
 print "Here are your ingredients: "
 print ingredients[a] 
@@ -42,7 +43,8 @@ while score >= -100:
 	elif ans in ingredients:
 		for item in active:
 			key = (ans, item) if ans < item else (item, ans)
-			val = int(scores[key] if key in scores else -10)
+			val = int(scores[key] if key in scores else -30) / 5
+			val = val * 2 if item in initial else val
 
 			print ans + " + " + item + " : " + ("+" + str(val) if val >= 0 else str(val))
 			score += val

@@ -1,62 +1,35 @@
+from bs4 import BeautifulSoup
+import urllib
 import string
 
 ###
 # BUILD RECIPE DICTIONARY
 ###
 recipe_dict = {}
-ingredients = []
-void = ["cakes and baking", "unleavened bread"]
 
-for c in string.ascii_lowercase:
-	in_file = open("data/" + c + ".txt", "r")
-	data = in_file.readlines()
-	if len(data) == 0:
-		break
+root = "http://www.bbc.co.uk/food/recipes/"
+recipe_file = map(lambda x: x.replace("\n", ""), open("recipes.txt", "r").readlines())
+out_file = open("cookbook.txt", "w")
 
-	for line in data:
-		arr = line.split(",")
+for line in recipe_file:
+	print line
 
-		ing = arr[0]
-		if ing in void:
-			break
+	link = root + line
+	page = urllib.urlopen(link).read()
+	soup = BeautifulSoup(page, "lxml")
 
-		ingredients.append(ing)
-		arr.pop(0)
+	lis = soup.find_all("li", class_="recipe-ingredients__list-item")
+	for item in lis:
+		ing = item.find_all("a", class_="recipe-ingredients__link")
+		if len(ing) > 0:
+			ingredient = ing[0].contents[0]
 
-		for item in arr:
-			if item not in recipe_dict:
-				recipe_dict[item] = []
-			recipe_dict[item].append(ing)
+			if line not in recipe_dict:
+				recipe_dict[line] = []
+			recipe_dict[line].append(ingredient)
 
-###
-# BUILD LIST OF INGREDIENTS
-###
-ingredients.sort()
-out_file = open("ingredients.txt", "w")
-
-for item in ingredients:
-	if item != "":
-		out_file.write(item + "\n")
-
-###
-# BUILD FINAL PAIR DICTIONARY
-###
-score_dict = {}
-
-for key in recipe_dict.keys():
-	for i in recipe_dict[key]:
-		for j in recipe_dict[key]:
-			if (i < j):
-				pair = (i, j)
-
-				if pair not in score_dict:
-					score_dict[pair] = 0
-				score_dict[pair] += 1
-
-###
-# WRITE TO FILE
-###
-out_file = open("freqs.txt", "w")
-
-for key in score_dict.keys():
-	out_file.write(key[0] + "," + key[1] + "," + str(score_dict[key]) + "\n")
+	if line in recipe_dict:
+		out_file.write(line)
+		for item in recipe_dict[line]:
+			out_file.write("," + item.encode("utf-8"))
+		out_file.write("\n")
