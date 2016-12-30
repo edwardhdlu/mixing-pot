@@ -1,0 +1,164 @@
+/**************************************
+  FONTS
+**************************************/
+
+@font-face {
+  font-family: "Gotham";
+  src: url(fonts/Gotham-Light.ttf) format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(fonts/Gotham-Book.ttf) format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(fonts/Gotham-Medium.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(fonts/Gotham-Bold.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(fonts/Gotham-Black.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url(fonts/Pacifico.ttf) format("truetype");
+  font-style: normal;
+}
+
+/**************************************
+  GENERAL
+**************************************/
+
+body {
+	margin: 0;
+	background-color: #e2e2e2;
+	font-family: "Gotham";
+	font-weight: 200;
+}
+
+div {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+div.no-shade {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+h1 {
+	margin: 0;
+	font-size: 32px;
+	font-weight: 300;
+}
+
+h2 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 100;
+	color: white;
+}
+
+p {
+	margin: 14px 0 0 0;
+	line-height: 150%;
+	font-size: 14px;
+	font-style: italic;
+}
+
+input[type="text"] {
+	width: 100%;
+	outline: none;
+	font-size: 16px;
+	color: #2f2f2f;
+	font-family: "Gotham";
+	font-weight: 200;
+	padding: 12px;
+	box-sizing: border-box;
+	background-color: #e2e2e2;
+	border-radius: 2px;
+	border: none;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.header {
+	width: 100%;
+	height: 40vh;
+	background: url("images/cooking.jpeg") no-repeat center;
+}
+
+.desc {
+	position: absolute;
+	top: 0;
+	margin-top: calc(10vh - 40px);
+	text-align: center;
+	width: 80%;
+	margin-left: 10%;
+	color: white;
+	box-sizing: border-box;
+}
+
+.header::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 40vh;
+	background-color: #ef5350;
+	opacity: 0.8;
+}
+
+.box {
+	width: 35%;
+	height: 60vh;
+	background-color: white;
+	position: absolute;
+	top: 20vh;
+	border-radius: 2px;
+	transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+	overflow-y: scroll;
+}
+
+.box.box-left {
+	left: 10%;
+}
+
+.box.box-right {
+	right: 10%;
+}
+
+.box:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.box-heading {
+	background-color: #555555;
+	padding: 16px;
+}
+
+.text-container {
+	background-color: #2f2f2f;
+	padding: 16px;
+}
