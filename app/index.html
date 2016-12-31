@@ -13,17 +13,28 @@
 			<h1>The Mixing Pot</h1>
 			<p>Add as many ingredients as you can before your score gets too low. Scores are based on how well a pair of ingredients go together.</p>
 		</div>
+
 		<div class="box box-left">
 			<div class="box-heading">
 				<h2>Your ingredients:</h2>
 			</div>
+			<ul id="active-ingredients"></ul>
 		</div>
 		<div class="box box-right">
 			<div class="box-heading">
 				<h2>Your score:</h2>
+				<span id="score">0</span>
 			</div>
 			<div class="text-container">
 				<input id="suggester" type="text" placeholder="Search for ingredients..."></input>
+			</div>
+			<span id="not-loaded">Loading ingredients...</span>
+			<ul id="search-results"></ul>
+		</div>
+
+		<div id="game-over">
+			<div class="wrapper no-shade">
+				Your final score is <span id="end-score">0</span> ingredients!
 			</div>
 		</div>
 	</body>
