@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	// fetch ingredients
 	var ingredients = [];
-	ingredients_src = "https://raw.githubusercontent.com/edwardhdlu/Cooking-Papa/master/data/ingredients.txt";
+	ingredients_src = "https://raw.githubusercontent.com/edwardhdlu/mixing-pot/master/data/ingredients.txt";
 	
 	var req1 = $.get(ingredients_src, function(data) { 
 		ingredients = data.split("\n");
@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 	// fetch scores
 	var scores = {};
-	scores_src = "https://raw.githubusercontent.com/edwardhdlu/Cooking-Papa/master/data/scores.txt";
+	scores_src = "https://raw.githubusercontent.com/edwardhdlu/mixing-pot/master/data/scores.txt";
 	var req2 = $.get(scores_src, function(data) {
 		var lines = data.split("\n");
 		for (var i = 0; i < lines.length; i++) {
